@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug, getPostYear } from "@/lib/posts";
 import { markdownToHtml } from "@/lib/markdown";
-import { getViews } from "@/lib/views";
+import { getViews, isViewsConfigured } from "@/lib/views";
 import { ViewCounter } from "@/components/view-counter";
 import { siteConfig } from "@/lib/config";
 
@@ -74,9 +74,10 @@ export default async function PostPage({
   const post = await getPostBySlug(slug);
   if (!post || getPostYear(post) !== year) notFound();
 
+  const showViews = isViewsConfigured();
   const [html, initialViews] = await Promise.all([
     markdownToHtml(post.markdown),
-    getViews(slug),
+    showViews ? getViews(slug) : Promise.resolve(0),
   ]);
 
   return (
@@ -99,7 +100,9 @@ export default async function PostPage({
             <time dateTime={post.date}>{formatDate(post.date)}</time>
             <span>({relativeTime(post.date)})</span>
           </div>
-          <ViewCounter slug={slug} initialViews={initialViews} />
+          {showViews && (
+            <ViewCounter slug={slug} initialViews={initialViews} />
+          )}
         </div>
       </header>
 

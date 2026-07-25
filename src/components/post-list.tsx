@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { PostMeta } from "@/lib/posts";
 import { getPostUrl, getPostYear } from "@/lib/posts";
 
-export type PostListItem = PostMeta & { views: number };
+export type PostListItem = PostMeta & { views: number | null };
 
 function formatViews(n: number): string {
   return n.toLocaleString("en-US");
@@ -34,9 +34,11 @@ export function PostList({ posts }: { posts: PostListItem[] }) {
                   {post.title}
                 </span>
               </div>
-              <div className="shrink-0 font-mono text-[12px] tabular-nums text-muted-dark">
-                {formatViews(post.views)} views
-              </div>
+              {post.views != null && (
+                <div className="shrink-0 font-mono text-[12px] tabular-nums text-muted-dark">
+                  {formatViews(post.views)} views
+                </div>
+              )}
             </Link>
           </li>
         );

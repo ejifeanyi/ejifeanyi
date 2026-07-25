@@ -4,7 +4,7 @@ Backend engineer working mainly with Node.js and TypeScript. I also do some infr
 
 - Currently building backend systems, internal tooling, and browser/cloud automation
 - Open to remote contract work
-- [LinkedIn](https://linkedin.com/in/ifeanyi-emmanuel) · [Website](https://your-website-here.dev)
+- [LinkedIn](https://linkedin.com/in/ifeanyi-emmanuel) · [Website](https://ejifeanyi.com)
 
 ---
 
