@@ -1,0 +1,103 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --muted: #8f8f8f;
+  --muted-dark: #666666;
+  --border: #1f1f1f;
+  --accent: #ededed;
+  --link: #e5e5e5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-dark: var(--muted-dark);
+  --color-border: var(--border);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #ededed;
+  color: #0a0a0a;
+}
+
+a {
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+/* Article prose styling — clean, Rauch-like reading experience */
+.prose-post {
+  --tw-prose-body: #d4d4d4;
+  --tw-prose-headings: #ededed;
+  --tw-prose-links: #ededed;
+  --tw-prose-bold: #ededed;
+  --tw-prose-counters: #8f8f8f;
+  --tw-prose-bullets: #444444;
+  --tw-prose-hr: #1f1f1f;
+  --tw-prose-quotes: #a3a3a3;
+  --tw-prose-quote-borders: #333333;
+  --tw-prose-code: #ededed;
+  --tw-prose-pre-code: #e5e5e5;
+  --tw-prose-pre-bg: #111111;
+  --tw-prose-th-borders: #333333;
+  --tw-prose-td-borders: #1f1f1f;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.prose-post a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: #444;
+}
+
+.prose-post a:hover {
+  text-decoration-color: #ededed;
+}
+
+.prose-post :not(pre) > code {
+  background: #1a1a1a;
+  border: 1px solid #262626;
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+  font-size: 0.85em;
+  font-weight: 400;
+}
+
+.prose-post :not(pre) > code::before,
+.prose-post :not(pre) > code::after {
+  content: none;
+}
+
+.prose-post pre {
+  border: 1px solid #1f1f1f;
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* Shiki syntax highlighting inside code blocks */
+.prose-post pre code {
+  display: grid;
+  background: transparent;
+}
